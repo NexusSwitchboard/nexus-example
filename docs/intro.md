@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
-metaTitle: "Introduction to Nexus Switchboard"
-metaDescription: "About Nexus Switchboard and links to getting started"
+layout: page
+nav_order: 1
 ---
 
 # What is Nexus
