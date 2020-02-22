@@ -1,4 +1,9 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Introduction to Nexus](README.md)
+* [Architecture](architecture.md)
+* [QuickStart](quickstart.md)
+* [Connections](connections.md)
+* [Modules](modules.md)
+* [Jobs](jobs.md)
 

@@ -1,4 +1,4 @@
-# Quick Start
+# QuickStart
 
 ## Prerequisites
 
@@ -9,20 +9,22 @@ To create a Nexus application quickly, follow these steps:
 ## Steps
 
 ### Setup Project Directory
-``` bash
+
+```bash
 $ mkdir myapp; cd myapp
 $ npm init
 $ npm install --save @nexus-switchboard/nexus-core @nexus-switchboard/nexus-mod-liveness
 ```
 
 ### Add Nexus Configuration
-``` bash
+
+```bash
 $ touch .nexus
 ```
 
 In file `.nexus` add this:
 
-``` json 
+```javascript
 {
   "rootUri": "/",
   "connections": [],
@@ -37,22 +39,22 @@ In file `.nexus` add this:
 
 ### Add Nexus Code
 
-In file `index.js`, add the following: 
+In file `index.js`, add the following:
 
-``` javascript 
+```javascript
 require('@nexus-switchboard/nexus-core').startNexusServer(3001);
 ```
 
 And in `package.json` under the `scripts` key add these items:
 
-```
+```text
 "dev": "node index.js --inspect",
 "start": "node index.js",
 ```
 
 ### Start the App
 
-``` bash
+```bash
 $ npm run dev
 ```
 
@@ -60,6 +62,9 @@ $ npm run dev
 
 In your browser, go to:
 
-    http://localhost:3001/m/liveness/up
-    
+```text
+http://localhost:3001/m/liveness/up
+```
+
 And you should see a JSON response.
+
