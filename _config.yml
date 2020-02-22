@@ -16,7 +16,7 @@
 title: "Nexus"
 description: Nexus makes gluing services together programmatically easier.
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://nexdocs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://nexusswitchboard.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/images/nexuslogo-withtext.png"
 permalink: pretty
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
@@ -36,7 +36,7 @@ heading_anchors: true
 # Aux links for the upper right navigation
 aux_links:
   "Nexus on Github":
-    - "//github.com/nexusswitchboard/nexdocs"
+    - "//github.com/nexusswitchboard/docs"
 
 # Footer content appears at the bottom of every page's main content
 footer_content: "<a href=\"https://github.com/NexusSwitchboard/nexus-core/blob/master/LICENSE.txt\">MIT license.</a>"
