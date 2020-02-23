@@ -19,7 +19,7 @@ baseurl: "/docs" # the subpath of your site, e.g. /blog
 url: "https://nexusswitchboard.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/images/nexuslogo-withtext.png"
 permalink: pretty
-exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
+exclude: ["examples/", "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
 
 theme: just-the-docs
 remote_theme: pmarsceill/just-the-docs
