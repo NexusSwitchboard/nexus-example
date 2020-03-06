@@ -13,7 +13,7 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@nexus-switchboard/nexus-extend": "^0.4.6"
+    "@nexus-switchboard/nexus-extend": "^0.5"
   },
   "devDependencies": {
     "@types/node": "^13.7.2",

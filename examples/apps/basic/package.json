@@ -14,7 +14,7 @@
   "author": "Karim Shehadeh",
   "license": "ISC",
   "dependencies": {
-    "@nexus-switchboard/nexus-core": "^0.4.11",
-    "@nexus-switchboard/nexus-mod-liveness": "0.0.2"
+    "@nexus-switchboard/nexus-core": "^0.5",
+    "@nexus-switchboard/nexus-mod-liveness": "^0.1.1"
   }
 }

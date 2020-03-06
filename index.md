@@ -3,6 +3,7 @@
 * [Introduction to Nexus](intro.md)
 * [Architecture](architecture.md)
 * [QuickStart](quickstart.md)
+* [Configuration](configuration.md)
 * [Connections](connections.md)
 * [Modules](modules.md)
 * [Jobs](jobs.md)
