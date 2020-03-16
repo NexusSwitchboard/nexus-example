@@ -7,4 +7,5 @@
 * [Connections](connections.md)
 * [Modules](modules.md)
 * [Jobs](jobs.md)
+* [Examples](examples.md)
 

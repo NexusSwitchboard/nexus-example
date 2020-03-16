@@ -7,13 +7,14 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc",
+    "build:watch": "tsc -w"
   },
   "engines": {
     "node": ">=12"
   },
   "dependencies": {
-    "@nexus-switchboard/nexus-extend": "^0.5"
+    "@nexus-switchboard/nexus-extend": "^0.5.3"
   },
   "devDependencies": {
     "@types/node": "^13.7.2",

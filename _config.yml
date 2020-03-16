@@ -20,7 +20,7 @@ url: "https://nexusswitchboard.github.io" # the base hostname & protocol for you
 logo: "/assets/images/nexuslogo-withtext.png"
 permalink: pretty
 exclude: ["examples/", "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
-
+source: "./docs"
 theme: just-the-docs
 remote_theme: pmarsceill/just-the-docs
 

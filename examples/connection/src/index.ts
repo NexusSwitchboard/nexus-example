@@ -2,7 +2,7 @@ import {Connection, ConnectionConfig} from "@nexus-switchboard/nexus-extend";
 
 export class BasicConnection extends Connection {
 
-    public name: string = "basic";
+    public name: string = "connection";
 
     public connect(): Connection {
         return undefined;

@@ -14,7 +14,13 @@
   "author": "Karim Shehadeh",
   "license": "ISC",
   "dependencies": {
-    "@nexus-switchboard/nexus-core": "^0.5",
-    "@nexus-switchboard/nexus-mod-liveness": "^0.1.1"
+    "@nexus-switchboard/nexus-core": "^0.5.7",
+    "@nexus-switchboard/nexus-mod-liveness": "^0.1.1",
+    "debug": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.2",
+    "tslib": "^1.11.1",
+    "typescript": "^3.5.3"
   }
 }

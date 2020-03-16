@@ -203,3 +203,30 @@ The **configuration** can contain any configuration options needed by the connec
 ### You're Done!
 
 
+
+## Folders vs. Published Packages
+
+Modules can either be included in the form of a published npm package or as a folder on disk.  The latter is useful in cases where you are simply making a specialized connection for your use case and have no intention to share.
+
+Using a folder reference makes it a lot easier to make changes to modules without having to manage npm links between projects.  Within the app modules config area, you will provide a `path` parameter that gives the relative path to the root directory where the module project folder lives.
+
+So, for example, if your app is here `/dev/mybot/app` and your module lives here: `/dev/mybot/mymod` then the `.nexus` configuration would look something like this:
+```json
+{
+    ...
+    "modules": {
+      "mymod": {
+        "path": ".."
+       }   
+    }
+
+    ...
+}
+```  
+If a relative path is it will be expected to be relative to the current working directory.  In most cases this is the project directory of the app.
+
+Note that in either case, whether it's a published package being used or a local one, the root will need to be capable of being `require`d without the need for specifying a file.  This usually means, specifying a `main` property in the package.json.
+
+The [example](/docs/example) will give you a look at how to setup the relationships between connections and apps with a barebones app and custom connection.
+
+
