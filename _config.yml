@@ -15,12 +15,11 @@
 # in the templates via {{ site.myvariable }}.
 title: "Nexus"
 description: Nexus makes gluing services together programmatically easier.
-baseurl: "/docs" # the subpath of your site, e.g. /blog
+# baseurl: "/docs"
 url: "https://nexusswitchboard.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/images/nexuslogo-withtext.png"
 permalink: pretty
 exclude: ["examples/", "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
-source: "./docs"
 theme: just-the-docs
 remote_theme: pmarsceill/just-the-docs
 

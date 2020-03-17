@@ -78,7 +78,7 @@ So, for example, if your app is here `/dev/mybot/app` and your connection lives 
     ...
 }
 ```  
-If a relative path is it will be expected to be relative to the current working directory.  In most cases this is the project directory of the app.
+If a relative path is given it will be expected to be relative to the current working directory.  In most cases this is the project directory of the app.
 
 Note that in either case, whether it's a published package being used or a local one, the root will need to be capable of being `require`d without the need for specifying a file.  This usually means, specifying a `main` property in the package.json.
 

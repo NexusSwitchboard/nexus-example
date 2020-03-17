@@ -1,3 +1,9 @@
+---
+title: "Configuration"
+layout: page
+nav_order: 3
+---
+
 # Configuration in Nexus
 
 Configuration in Nexus can seem complicated at first but there are a few things to keep in mind that might help.
