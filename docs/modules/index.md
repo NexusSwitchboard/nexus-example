@@ -2,6 +2,7 @@
 title: "Modules"
 layout: page
 nav_order: 4
+has_children: true
 ---
 # Modules
 Modules are the _C_ in MVC in that much of the business logic happens here.  Modules execution is triggered in a few different ways depending on which connections you are using and what type of work is being done. 
