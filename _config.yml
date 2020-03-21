@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: "Nexus"
 description: Nexus makes gluing services together programmatically easier.
-# baseurl: "/docs"
+baseurl: ""
 url: "https://nexusswitchboard.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/images/nexuslogo-withtext.png"
 permalink: pretty
