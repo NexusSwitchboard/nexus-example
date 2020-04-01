@@ -97,6 +97,16 @@ Here are the Jira _secret_ options that are required:
 * `SERVICE_JIRA_ADDON_CACHE: ""`
     * This is the connection string used to store information about addon clients.  This is necessary if you want to client data in a way that is not using the disk.  Depending on how you deploy this, you may lose that data with each restart without specifying a separate datstore here.  The options are sqlite or redis and connection string documentation is available here:  https://github.com/lukechilds/keyv
 
+# Slack Configuration
+These are configuration options that tell the module how it should interact with Slack.  
+
+* `SLACK_PRIMARY_CHANNEL: ""`
+    * The ID of the channel that will act as the primary.  The primary channel is the one that is always being monitored  by the support team. By itself, this doesn't do anything but it indicates to other options how it should interact with the slack interface.   
+* `SLACK_CONVERSATION_RESTRICTION: ""`
+    * The conversation restriction option can be one of the following:
+        * invited - In this mode, the request flow will happen only in the channel that it was started in (a notification to the primary channel will be sent if a primary channel is set)
+        * primary - In this mode, the request flow will always happen in the primar channel (if one is specified).  Some updates will be sent to the primary channel, though.
+
 # Slack App Configuration
 You will need the following configuration options set in the Slack App you create and point to your instance of the module:
 

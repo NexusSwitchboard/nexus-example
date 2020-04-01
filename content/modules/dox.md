@@ -13,12 +13,6 @@ parent: Modules
 
 ---
 
-Dox is a general purpose documentation helper which connects 
-tools with your documentation provider to allow for easier discovery 
-of documentation among other things.
-
-This module is an extension to the [Nexus Switchboard framework](https://github.com/NexusSwitchboard/nexus-core).  It cannot be run on its own.
-
 
 ## Configuration
 The Dox module has the following configuration options:
@@ -31,6 +25,11 @@ For these values, visit [the Slack API documentation center](https://api.slack.c
 * *SLACK_CLIENT_ID*
 * *SLACK_CLIENT_SECRET*
 * *SLACK_SIGNING_SECRET*
+
+**Github Configuration**
+
+* *GITHUB_ACCESS_TOKEN* - The Personal access token you [can get by following these instructions](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+* *GITHUB_BASE_URL* - (Optional) This is the API base URL to use for calls (defaults to https://api.github.com)
 
 **Confluence Configuration**
 
