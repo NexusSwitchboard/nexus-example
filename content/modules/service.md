@@ -6,7 +6,8 @@ parent: "Modules"
 ---
 
 # Service - Nexus Module
-The Service module provides functionality that provides ways of interacting with a service team through existing tools
+The Service module provides functionality that provides ways of interacting with a service team through Slack and Jira.
+It provides a deeper and purpose-built set of integrations between slack and Jira that are not available with the Jira
 
 # Features
 1. Using either a slash command or _action_ to initiate the request dialog
@@ -18,16 +19,23 @@ The Service module provides functionality that provides ways of interacting with
 ## Message Action
 A new action will appear in the actions menu named something like _Submit Service Request_ (when you create the slack app, you can specify whatever you want for the text).
 
-### Slash Command
-There is a slash command invoked with `/request [description]` (you can call it whatever you want).     
+## Slash Command
+There is a slash command invoked with `/<REQUEST_COMMAND_NAME> [description]` (you can configure it however you want keeping in mind that the command name needs to be set both in the Slack App configuration UI (<instance>.slack.com/admin) and in the service module configuration's `REQUEST_COMMAND_NAME` config variable).     
 
-### Behavior
+## Behavior
 No matter how a submission request is invoked, a modal appears allowing the user to enter request details.  
 It will be pre-populated with the text in the message or command that was used to invoke it.
 
 When the modal is submitted, a Jira Ticket is created and associated with the channel in which the message first appeared.  It will also post a reply in the thread with information about the ticket submitted and action buttons that allow folks to cancel, claim and complete the ticket directly from Slack.
 
 In addition to the creation and status updates, the slack thread that is associated with the ticket will monitor any posts and submit those as comments on the Jira ticket with a reference back to the originating slack conversation.
+
+### Primary and Notification Channels
+You can configure the service to invoke a request in any channel but have all the updates happen in the primary channel.  In this case, the channel that gets the majority of the updates is called `Primary` and the `Notification` channel is the one where the request was initiated - it gets references to changes but not all the detail.  This is meant for cases where users want the convienience of starting a conversation from their own channels. 
+
+### Direct Message Notifications
+In addition to the notifications mentioned above, users will get DMs from the module when status changes along with a link back to the request.  This is to help with ensuring that all parties are aware of the status of the ticket at all times.
+
 
 # Implementation
 The ServiceRequest class is where the bulk of the functionality lives. The `interactions.ts` file is where the interactions are received.  
@@ -86,6 +94,39 @@ Here are the module configuration values that can and, in most cases, must be se
         1. The label that is attached to a created issue plus the text "-request" as in "infrabot-request"
         2. The property name used when creating the custom property associated with each issue to store information such as slack thread data.  In this case, it is used as is: "infrabot", for example.
 
+* `REQUEST_JIRA_PRIORITIES: [ServicePriority]`
+    * This a list of priorities (in the order they will be displayed) that includes information about the associated 
+        Jira Priority.  Every priority in the service module must be mapped to an actual Jira Priority in the Jira instance
+        you're using.  
+    * These priorities will show up in the request submission dialog in the order they are listed here.
+    * The `triggersPagerDuty` boolean indicates whether or not a pagerduty alert will be issued if this priority is selected when the submission is complete.
+    * Here is a sample of the structure:
+    ```
+          "REQUEST_JIRA_PRIORITIES": [
+            {
+              "name": "Low",
+              "jiraName": "Low",
+              "triggersPagerDuty": false,
+              "description": "It’d be nice to have this today, but I can wait"
+            },
+            {
+              "name": "Medium",
+              "jiraName": "Medium",
+              "triggersPagerDuty": false,
+              "description": "I could use this in the next hour"
+            },
+            {
+              "name": "High",
+              "jiraName": "High",
+              "triggersPagerDuty": true,
+              "description": "Kittens are drowning, wake up and help me!"
+            }
+          ],
+
+    ```    
+    Note that the name in the bot and the jira name of the priority are the same here but they don't have to be.
+    
+     
 Here are the Jira _secret_ options that are required:
 
 * `SERVICE_JIRA_HOST: ""`
@@ -97,15 +138,39 @@ Here are the Jira _secret_ options that are required:
 * `SERVICE_JIRA_ADDON_CACHE: ""`
     * This is the connection string used to store information about addon clients.  This is necessary if you want to client data in a way that is not using the disk.  Depending on how you deploy this, you may lose that data with each restart without specifying a separate datstore here.  The options are sqlite or redis and connection string documentation is available here:  https://github.com/lukechilds/keyv
 
+# PagerDuty Configuration
+PagerDuty configuration is only necessary if you have indicated that one or more priorities in the jira priorities configuration should trigger a pager duty request.  All of the pagerduty configuration options are considered secrets and are as follows:
+
+* `SERVICE_PAGERDUTY_TOKEN=`
+    * This the token you create for this app within your own PD profile.
+    
+* `SERVICE_PAGERDUTY_SERVICE_DEFAULT=`
+    * This is the ID of the service to use when creating the incident
+    
+* `SERVICE_PAGERDUTY_ESCALATION_POLICY_DEFAULT=`
+    * This is the ID of the escalation policy to use when creating the incident
+
+
 # Slack Configuration
 These are configuration options that tell the module how it should interact with Slack.  
 
 * `SLACK_PRIMARY_CHANNEL: ""`
-    * The ID of the channel that will act as the primary.  The primary channel is the one that is always being monitored  by the support team. By itself, this doesn't do anything but it indicates to other options how it should interact with the slack interface.   
+    * The ID of the channel that will act as the primary.  The primary channel is the one that is always being monitored  by the support team. By itself, this doesn't do anything but it indicates to other options how it should interact with the slack interface.
+       
 * `SLACK_CONVERSATION_RESTRICTION: ""`
     * The conversation restriction option can be one of the following:
         * invited - In this mode, the request flow will happen only in the channel that it was started in (a notification to the primary channel will be sent if a primary channel is set)
         * primary - In this mode, the request flow will always happen in the primar channel (if one is specified).  Some updates will be sent to the primary channel, though.
+
+You can also specify the emoji to be used within the messages that are rendered in slack:
+
+* `REQUEST_COMPLETED_SLACK_ICON": ":<emoji_name>:"`
+* `REQUEST_CANCELLED_SLACK_ICON": ":<emoji_name>:"`
+* `REQUEST_CLAIMED_SLACK_ICON": ":<emoji_name>:"`
+* `REQUEST_SUBMITTED_SLACK_ICON": ":<emoji_name>:"`
+* `REQUEST_WORKING_SLACK_ICON": ":<emoji_name>:"`
+* `REQUEST_EDITING_SLACK_ICON": ":<emoji_name>:"`
+* `REQUEST_ERROR_SLACK_ICON": ":<emoji_name>:"`
 
 # Slack App Configuration
 You will need the following configuration options set in the Slack App you create and point to your instance of the module:
