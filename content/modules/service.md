@@ -13,7 +13,7 @@ It provides a deeper and purpose-built set of integrations between slack and Jir
 1. Using either a slash command or _action_ to initiate the request dialog
 2. Creates an issue in Jira and allows users to update the status of the ticket from Slack.  
 3. All conversation that happens in the Slack thread associated with the request gets added as a comment to the Jira ticket.
-
+4. Communicate with 
 # How It Works
 
 ## Message Action
@@ -138,6 +138,12 @@ Here are the Jira _secret_ options that are required:
 * `SERVICE_JIRA_ADDON_CACHE: ""`
     * This is the connection string used to store information about addon clients.  This is necessary if you want to client data in a way that is not using the disk.  Depending on how you deploy this, you may lose that data with each restart without specifying a separate datstore here.  The options are sqlite or redis and connection string documentation is available here:  https://github.com/lukechilds/keyv
 
+* `JIRA_ADDON_KEY: ""`
+    * This is the key used to uniquely identify the Jira Addon that is part of the service module.  Avoid using spaces in this key.
+    
+* `JIRA_ADDON_NAME: ""`
+    * This is the name of the Jira Addon as it will appear to the Jira Admin in the addons section of the Jira Admin UI.
+       
 # PagerDuty Configuration
 PagerDuty configuration is only necessary if you have indicated that one or more priorities in the jira priorities configuration should trigger a pager duty request.  All of the pagerduty configuration options are considered secrets and are as follows:
 

@@ -63,6 +63,8 @@ export default {
 }
 ```
 
+
+
 So you can see that default configs are being used and merged with the given configs.  THe given configs will override the defaults if they exist.  And what is returned to the core is the final configuration.
 
 |**Note**|

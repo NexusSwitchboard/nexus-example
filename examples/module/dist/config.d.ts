@@ -1,4 +1,2 @@
-declare const _default: {
-    "CONFIG_1": string;
-};
-export default _default;
+import { IConfigGroups } from "@nexus-switchboard/nexus-extend";
+export declare const configRules: IConfigGroups;

@@ -1,0 +1,34 @@
+.info {
+    background-color: #c2d3ee;
+    color: black;
+    padding:10px;    
+
+    &:before {
+        content: "\24D8\00a0";
+        white-space: pre;
+    }
+}
+
+.example {
+    background-color: #f2f7ae;
+    color: black;
+    padding: 10px;
+
+    &:before {
+        content: "\2b50\00a0\00a0 Example\A";
+        font-weight:bold;
+        white-space: pre-wrap;
+    }
+}
+
+.important {
+    background-color: #e6a254;
+    color: black;
+    padding: 10px;
+
+    &:before {
+        content: "\26a0\00a0\00a0 Important\A";
+        font-weight:bold;
+        white-space: pre-wrap;
+    }
+}

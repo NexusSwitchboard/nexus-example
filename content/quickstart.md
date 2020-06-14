@@ -5,11 +5,12 @@ nav_order: 2
 ---
 # Quick Start
 
+This will explain how to get a nexus application up and running using an existing module pretty quickly.
+
 ## Prerequisites
 
-* Node and NPM are installed.  Nexus is tested with v12+ though it should work with version 8+
-
-To create a Nexus application quickly, follow these steps:
+Node v12 is being used (Nexus is tested with v12+ though it should work with version 8+)
+{:.important}
 
 ## Steps
 

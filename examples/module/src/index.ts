@@ -3,21 +3,25 @@ import {
   Job,
   NexusJobDefinition,
   NexusModule,
-  ModuleConfig, ConnectionRequest
+  ModuleConfig, ConnectionRequest, IConfigGroups
 } from '@nexus-switchboard/nexus-extend';
 
 import routes from "./routes";
 import jobs from "./jobs";
 import connections from "./connections";
-import config from "./config";
+import {configRules} from "./config";
 import {Application} from "express";
 
 export class BasicModule extends NexusModule {
 
     public name = "basic";
 
-    public loadConfig(overrides?: ModuleConfig): ModuleConfig {
-        return Object.assign({}, overrides, config);
+    protected getConfigRules(): IConfigGroups {
+        return configRules;
+    }
+
+    public loadConfig(config?: ModuleConfig): ModuleConfig {
+        return config;
     }
 
     public loadRoutes(_config: ModuleConfig): IRouteDefinition[] {
