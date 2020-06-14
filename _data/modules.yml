@@ -1,0 +1,9 @@
+- name: Service
+  url: https://github.com/NexusSwitchboard/nexus-module-service/
+  image: service-logo.png
+- name: Liveness
+  url: https://github.com/NexusSwitchboard/nexus-module-liveness/
+  image: liveness-logo.png  
+- name: Dox
+  url: https://github.com/NexusSwitchboard/nexus-conn-dox/
+  image: dox-logo.png  

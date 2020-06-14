@@ -1,0 +1,19 @@
+---
+title: "Module Gallery"
+layout: page
+parent: "Modules"
+nav_order: 2
+---
+<ul class="gallery">
+{% for module in site.data.modules %}
+    {% assign image_url = "assets/images/" | append: module.image %}
+<li>
+    <a href="{{module.url}}">
+        <div class="gallery-logo"><img src="{{image_url | relative_url}}"/></div>
+        <div class="gallery-name">{{module.name}}</div>    
+    </a>
+</li>
+{% endfor %}
+</ul>
+
+<div style="clear: both"></div>

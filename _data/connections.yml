@@ -1,0 +1,15 @@
+- name: Jira
+  url: https://github.com/NexusSwitchboard/nexus-conn-jira/
+  image: jira-logo.png
+- name: Confluence
+  url: https://github.com/NexusSwitchboard/nexus-conn-confluence/
+  image: confluence-logo.png  
+- name: Sengrid
+  url: https://github.com/NexusSwitchboard/nexus-conn-sengrid/
+  image: sendgrid-logo.png  
+- name: PagerDuty
+  url: https://github.com/NexusSwitchboard/nexus-conn-pagerduty/
+  image: pagerduty-logo.jpg  
+- name: Slack
+  url: https://github.com/NexusSwitchboard/nexus-conn-slack/
+  image: slack-logo.png  

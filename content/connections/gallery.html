@@ -1,0 +1,19 @@
+---
+title: "Connection Gallery"
+layout: page
+parent: "Connections"
+nav_order: 2
+---
+<ul class="gallery">
+{% for connection in site.data.connections %}
+    {% assign image_url = "assets/images/" | append: connection.image %}
+<li>
+    <a href="{{connection.url}}">
+        <div class="gallery-logo"><img src="{{image_url | relative_url}}"/></div>
+        <div class="gallery-name">{{connection.name}}</div>    
+    </a>
+</li>
+{% endfor %}
+</ul>
+
+<div style="clear: both"></div>

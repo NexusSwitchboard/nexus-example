@@ -32,3 +32,44 @@
         white-space: pre-wrap;
     }
 }
+
+ul {
+    list-style-type: none;
+}
+
+ul.gallery  {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+
+ul.gallery li {
+    float: left;
+    margin: 10px;
+    text-align: center;
+    width:120px;    
+    border: 1px solid #efefef;
+    border-radius: 5px;
+
+    &:before {
+        content: "";
+    }
+}
+
+.gallery-name {
+    font-size: 0.9em;
+    text-align:center;
+    word-wrap: normal;
+    white-space: normal;
+    background-color: #efefef;
+    padding:10px;
+}
+
+.gallery-logo {
+    padding: 10px;
+}
+
+.gallery-logo img {
+    width: 64px;
+    height: 64px;
+}
