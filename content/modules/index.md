@@ -38,34 +38,78 @@ Plus the additional project config files at the root.
 
 ## Step 2 - Setup Configuration
 
-Configuration is refers to the properties that are unique to your module and must be set by the user of your module.  Configuration of your module lives in two places.
+Configuration refers to the properties that are unique to your module and must be set by the user of your module.  
 
-1. The .nexus file that is controlled by the app that is using your module
-2. The `loadConfig` method in your module class.
+### Controlling Configuration
+Module configuration is set in the `.nexus` file by the client.  These values, during initialization, are passed into the module instance method `loadConfig`.  This is done to give the module the ultimate decision making ability for how to process the configuration.  *Whatever is returned from this method becomes the stored module configuration*.  It is not uncommon to simply return what you're given and rely on defined configuration rules to handle the validation of the rules.
 
-When a module is initialized by the Nexus core, it takes the .nexus configuration for that module and passes it in to the loadConfig method of your module.  You can change properties, apply defaults, etc at this point.  
+### Configuration rules
+As a module writer you can dictate the rules of configuration options using the Configuration Rules structures.
 
-In the _Basic_ example, you will see the following code:
+You can override the `getConfigRules` in your module class and return something like this:
+
+```typescript
+const ConfigRules: IConfigGroups = {
+    'Jira Connection': [
+        {name: 'JIRA_USERNAME', type: ["string"], required: true, level: "error", reason: "Needed to integrate with Jira APIs"},
+        {name: 'JIRA_API_KEY', required: true, level: "error", reason: "Needed to integrate with Jira APIs"},
+        {
+            name: 'JIRA_ADDON_CACHE',
+            type: ["string"],
+            required: true,
+            level: "error",
+            reason: "Needed to store addon client data to properly decode host events and requests."
+        }
+    ]
+}
+```
+
+In this example the rules are dictating that these three configuration values are required.  You can even dictate what format these values should have.  If you mark them as errors, then module loading will fail.  Otherwise, logs will simply show a warning.
+
+Although not required, this method of validating configuration allows you to describe the configuration options in a fairly self-documenting way and makes it easier for module users to easily understand what configuration is possible and required.
+
+In the module example, you will see the following code in the `index.ts` file
 
 In the index.ts file:
 ```typescript
-import config from "./config";
-...
-public loadConfig(overrides?: NexusModuleConfig): NexusModuleConfig {
-    return Object.assign({}, overrides, config);
+import {configRules} from "./config";
+
+export class BasicModule extends NexusModule {
+    ...
+    protected getConfigRules(): IConfigGroups {
+        // We rely on our config rules to validate that we are getting the required 
+        //  config in the right format.
+        return configRules;
+    }
+
+    public loadConfig(config?: ModuleConfig): ModuleConfig {
+        // Notice that we simply return the config object that is given to us. That's because
+        //  we are relying on the configRules defined to be used to validate that the config
+        //  is valid.  We *could* validate things here that are not possible to validate any
+        //  other way, though.
+        return config;    
+    }
+    ...
 }
 ```
 
-And in the config.ts file:
+And here are the config fules that are defined in `./config`
+
 ```typescript
-export default {
-    "CONFIG_1": "Config 1 Value"
+export const configRules:IConfigGroups = {
+    "basic": [
+        {
+            name: "CONFIG_1",
+            reason: "An example of a configuration value that must be set",
+            required: true,
+            default: "Test",
+            level: "error",
+            type: ["string"]
+        }
+    ]
 }
+
 ```
-
-
-
-So you can see that default configs are being used and merged with the given configs.  THe given configs will override the defaults if they exist.  And what is returned to the core is the final configuration.
 
 |**Note**|
 |--------|

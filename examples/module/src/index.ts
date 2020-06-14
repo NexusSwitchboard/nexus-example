@@ -17,10 +17,16 @@ export class BasicModule extends NexusModule {
     public name = "basic";
 
     protected getConfigRules(): IConfigGroups {
+        // We rely on our config rules to validate that we are getting the required 
+        //  config in the right format.
         return configRules;
     }
 
     public loadConfig(config?: ModuleConfig): ModuleConfig {
+        // Notice that we simply return the config object that is given to us. That's because
+        //  we are relying on the configRules defined to be used to validate that the config
+        //  is valid.  We *could* validate things here that are not possible to validate any
+        //  other way, though.
         return config;
     }
 
