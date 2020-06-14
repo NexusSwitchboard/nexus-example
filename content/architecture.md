@@ -6,7 +6,7 @@ nav_order: 3
 
 # Nexus Architecture
 
-![Nexus App Architecture](/assets/images/app-architecture-simplified.png)
+![Nexus App Architecture]({% link assets/images/nexus-architecture-simplified.png %})
 
 For those who are familiar with the Model/View/Controller pattern, Nexus applies this pattern loosely against the notion of service interconnecitivity.
 
