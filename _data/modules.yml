@@ -1,9 +1,9 @@
 - name: Service
-  url: https://github.com/NexusSwitchboard/nexus-module-service/
+  url: https://github.com/NexusSwitchboard/nexus-mod-service/
   image: service-logo.png
 - name: Liveness
-  url: https://github.com/NexusSwitchboard/nexus-module-liveness/
+  url: https://github.com/NexusSwitchboard/nexus-mod-liveness/
   image: liveness-logo.png  
 - name: Dox
-  url: https://github.com/NexusSwitchboard/nexus-conn-dox/
+  url: https://github.com/NexusSwitchboard/nexus-mod-dox/
   image: dox-logo.png  
