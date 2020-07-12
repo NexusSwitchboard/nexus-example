@@ -1,8 +1,8 @@
 ---
-title: "Connections"
+title: "About Connections"
+parent: "Connection Gallery"
 layout: page
-nav_order: 5
-has_children: true
+nav_order: 2
 ---
 # Connections
 
@@ -11,7 +11,7 @@ Connections in Nexus represent a translation layer between a Nexus module and a 
 Rather than having Module A and Module B both embed a jira client into their codebase and manage the configuration, initialization and instantiation themselves, they can both use Connection A which exposes access to Jira through the same interface.
 {:.example}
 
-To use one of the existing connections, check out the [connection gallery here]({% link content/connections/gallery.html %})
+To use one of the existing connections, check out the [connection gallery here]({% link content/connections/index.html %})
 {:.info}
 
 

@@ -2,6 +2,7 @@
 title: "Configuration"
 layout: page
 nav_order: 3
+has_children: true
 ---
 
 # Configuration in Nexus
@@ -31,18 +32,7 @@ The `global` property holds the following configuration options:
 https://mynexus.com
 ```
 
-* **authentication** - This contains information about how to protect endpoints that are protected with the `protectedEndpoint` call.  The type of authentication to use is the key and the value for that key is an object containing configuration info for that auth type.  The only supported auth type right now is auth0:
-
-```json
-    "authentication": {
-        "auth0": {
-          "jwksUri": "https://<your_tenent>/.well-known/jwks.json",
-          "audience": "https://<your_tenent_audience>",
-          "issuer": "https://<your_tenent_issuer>",
-          "algorithms": ["RS256"]
-        }
-    }
-```
+* **authentication** - This contains information about how to protect endpoints that are protected with the `protectedEndpoint` call.  For more information about this, checkout the more [detailed authentication documentation]({%link content/configuration/auth.md %}).
 
 ### Modules and Connections
 

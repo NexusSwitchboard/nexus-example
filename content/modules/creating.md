@@ -1,7 +1,7 @@
 ---
-title: "Creating your own"
+title: "Creating Your Own"
+parent: "Module Gallery"
 layout: page
-parent: "Modules"
 nav_order: 2
 ---
 ## Step 1 - Create and Prep a Typescript Project

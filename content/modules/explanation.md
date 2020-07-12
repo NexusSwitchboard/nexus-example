@@ -1,8 +1,8 @@
 ---
-title: "Modules"
+title: "About Modules"
+parent: "Module Gallery"
 layout: page
-nav_order: 4
-has_children: true
+nav_order: 1
 ---
 # Modules
 Modules are where the majority of the business logic within a Nexus-based application lives.  Functonality within a module should focus on one particular end goal as opposed to putting a variety of disparate functionality into a single module.  
@@ -10,7 +10,7 @@ Modules are where the majority of the business logic within a Nexus-based applic
 For example, the _Service Module_ is entirely focused on providing an end to end solution for technical support that ties together slack and Jira.  Similarly, the Dox module is focused on searching and highlighting documentation.  While the two could be put into a single module, it's better that there are two separate modules in cases where someone needs just the documentation functionality or just the service functionality.
 {:.example}
 
-To see some of the existing modules checkout the [module gallery here]({% link content/modules/gallery.html %})
+To see some of the existing modules checkout the [module gallery here]({% link content/modules/index.html %})
 {:.info}
 
 ## What Can Modules Do?

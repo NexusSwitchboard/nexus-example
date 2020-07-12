@@ -1,9 +1,8 @@
 ---
 title: "Creating Your Own"
 layout: page
-parent: "Connections"
-nav_order: 1
-has_children: false
+parent: "Connection Gallery"
+nav_order: 2
 ---
 ## Creating Your Own Connection
 
